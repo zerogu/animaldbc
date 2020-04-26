@@ -14,6 +14,11 @@ const routes = [
     name: 'create',
     component: () => import('../views/Create.vue')
   },
+  {
+    path: '/join',
+    name: 'join',
+    component: () => import('../views/Join.vue')
+  },
 ]
 
 export default new Router({
