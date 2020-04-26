@@ -2,6 +2,7 @@ const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 module.exports = {
   // baseUrl: process.env.NODE_ENV === 'production' ? '/app/' : '/',
+  outputDir: 'doc',
   runtimeCompiler: true,
   devServer: {
     host: '127.0.0.1',
