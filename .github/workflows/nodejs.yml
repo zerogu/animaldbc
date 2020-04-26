@@ -9,18 +9,17 @@ on:
       - master
 
 jobs:
-  build:
-
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: npm install, build, and test
-      run: |
-        npm ci
-        npm run build
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2.5.0
+    - name: Checkout
+      uses: actions/checkout@v1
+      
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v2
       env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACCESS_TOKEN }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: docs
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: docs
+        BUILD_SCRIPT: npm install && npm run build
