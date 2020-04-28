@@ -6,11 +6,18 @@ module.exports = {
   devServer: {
     host: '127.0.0.1',
     port: 9000,
-    // public: 'aries.bilibili.co',
     overlay: {
       warnings: true,
       errors: true
+    },
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:7001/',
+        ws: true,
+        changeOrigin: true,
+      },
     }
+
   },
   configureWebpack: {
     plugins: [
